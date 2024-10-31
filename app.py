@@ -1,4 +1,3 @@
-
 import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
@@ -66,15 +65,22 @@ def plot_graphs(k1, k2, m1, m2, P, omega):
 
     st.pyplot(fig)
 
-# Streamlit sliders for user input
+# Streamlit layout
 st.title("Dynamic System Simulation")
 
-k1 = st.slider("k1", 0.0, 200.0, 125.0, 0.01)
-k2 = st.slider("k2", 0.0, 200.0, 1.25, 0.01)
-m1 = st.slider("m1", 0.0, 200.0, 5.0, 0.01)
-m2 = st.slider("m2", 0.0, 200.0, 0.05, 0.01)
-P = st.slider("P", 0.0, 200.0, 100.0, 0.01)
-omega = st.slider("omega", 0.0, 200.0, 5.0, 0.01)
+# Create columns for sliders and graphs
+col1, col2 = st.columns([1, 3])  # Adjust the size ratio as needed
 
-# Plot graphs with the current slider values
-plot_graphs(k1, k2, m1, m2, P, omega)
+with col1:
+    # Sliders for user input
+    k1 = st.slider("k1", 0.0, 200.0, 125.0, 0.01)
+    k2 = st.slider("k2", 0.0, 200.0, 1.25, 0.01)
+    m1 = st.slider("m1", 0.0, 200.0, 5.0, 0.01)
+    m2 = st.slider("m2", 0.0, 200.0, 0.05, 0.01)
+    P = st.slider("P", 0.0, 200.0, 100.0, 0.01)
+    omega = st.slider("omega", 0.0, 200.0, 5.0, 0.01)
+
+with col2:
+    # Plot graphs with the current slider values
+    plot_graphs(k1, k2, m1, m2, P, omega)
+
